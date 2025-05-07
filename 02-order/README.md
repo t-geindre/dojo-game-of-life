@@ -27,4 +27,4 @@ The simplest one is the "Blinker":
 
 ![oscillator](./../assets/blinker.gif)
 
-You shall now proceed to the next step.
+You shall now proceed to the [next step](./../03-optimization/README.md).
