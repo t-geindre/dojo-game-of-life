@@ -1,15 +1,13 @@
 package d04
 
 import (
-	"dojo-game-of-life/debug"
 	"dojo-game-of-life/game"
 	"github.com/hajimehoshi/ebiten/v2"
-	"runtime"
 )
 
 type Game struct {
-	pixel []byte
-	grid  *Grid
+	pixels []byte
+	grid   *Grid
 }
 
 func NewGame(w, h int) game.Game {
@@ -17,8 +15,8 @@ func NewGame(w, h int) game.Game {
 	grid.Randomize(.3)
 
 	return &Game{
-		pixel: make([]byte, w*h*4),
-		grid:  grid,
+		pixels: make([]byte, w*h*4),
+		grid:   grid,
 	}
 }
 
@@ -28,8 +26,7 @@ func (g *Game) Update() {
 }
 
 func (g *Game) Draw(screen *ebiten.Image) {
-	screen.WritePixels(g.pixel)
-	debug.DrawPrintf(screen, debug.TopRight, "%d CPU", runtime.NumCPU())
+	screen.WritePixels(g.pixels)
 }
 
 func (g *Game) UpdatePixels() {
@@ -38,9 +35,9 @@ func (g *Game) UpdatePixels() {
 		if c {
 			v = 0xff
 		}
-		g.pixel[i*4] = v
-		g.pixel[i*4+1] = v
-		g.pixel[i*4+2] = v
-		g.pixel[i*4+3] = 0xff
+		g.pixels[i*4] = v
+		g.pixels[i*4+1] = v
+		g.pixels[i*4+2] = v
+		g.pixels[i*4+3] = 0xff
 	}
 }

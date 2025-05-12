@@ -5,7 +5,8 @@ import (
 	d01 "dojo-game-of-life/01-chaos"
 	d02 "dojo-game-of-life/02-order"
 	d03 "dojo-game-of-life/03-optimization"
-	d04 "dojo-game-of-life/04-end"
+	d04 "dojo-game-of-life/04-control"
+	d05 "dojo-game-of-life/05-end"
 	"dojo-game-of-life/game"
 	"github.com/hajimehoshi/ebiten/v2"
 	"os"
@@ -29,6 +30,7 @@ func main() {
 		"02": {l: d02.NewGame},
 		"03": {l: d03.NewGame, w: 1800, h: 900},
 		"04": {l: d04.NewGame, w: 1800, h: 900},
+		"05": {l: d05.NewGame, w: 1800, h: 900},
 	}
 
 	dojo := dojos[def]
