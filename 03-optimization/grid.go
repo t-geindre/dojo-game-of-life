@@ -66,14 +66,11 @@ func (g *Grid) NextState() {
 		chunks[len(chunks)-1] = append(chunks[len(chunks)-1], i)
 	}
 
-	//fmt.Printf("%#v\n", chunks[2])
-	//os.Exit(0)
 	for c := range chunks {
 		wg.Add(1)
 		go func(g *Grid, ci []int) {
-			for i := range ci {
+			for _, i := range ci {
 				n := g.CountAliveNeighbors(i)
-				//fmt.Println("index in batch , %D", i)
 				if g.cells[i] {
 					g.next[i] = n == 2 || n == 3
 				} else {
@@ -86,5 +83,16 @@ func (g *Grid) NextState() {
 	}
 
 	wg.Wait()
+
+	/*for i := range g.cells {
+		n := g.CountAliveNeighbors(i)
+		fmt.Println("index in batch , %D", i)
+		if g.cells[i] {
+			g.next[i] = n == 2 || n == 3
+		} else {
+			g.next[i] = n == 3
+		}
+	}*/
+
 	g.cells, g.next = g.next, g.cells
 }
