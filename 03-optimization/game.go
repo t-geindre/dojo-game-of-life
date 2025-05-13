@@ -3,8 +3,9 @@ package d03
 import (
 	"dojo-game-of-life/debug"
 	"dojo-game-of-life/game"
-	"github.com/hajimehoshi/ebiten/v2"
 	"runtime"
+
+	"github.com/hajimehoshi/ebiten/v2"
 )
 
 type Game struct {

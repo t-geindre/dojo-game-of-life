@@ -7,8 +7,9 @@ import (
 	d03 "dojo-game-of-life/03-optimization"
 	d04 "dojo-game-of-life/04-end"
 	"dojo-game-of-life/game"
-	"github.com/hajimehoshi/ebiten/v2"
 	"os"
+
+	"github.com/hajimehoshi/ebiten/v2"
 )
 
 const (

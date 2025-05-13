@@ -1,6 +1,8 @@
 package d02
 
-import "math/rand"
+import (
+	"math/rand"
+)
 
 type Grid struct {
 	cells, next []bool
@@ -43,7 +45,7 @@ func (g *Grid) NextState() {
 		// - Alive cell: stays alive if 2 or 3 neighbors, dies otherwise
 		// - Dead cell: becomes alive if exactly 3 neighbors, stays dead otherwise
 		// ...
-		_ = n
+		g.next[i] = (!g.cells[i] && n == 3) || (g.cells[i] && n >= 2 && n <= 3)
 	}
 
 	// Swap the cells and next buffers
@@ -67,12 +69,19 @@ func (g *Grid) CountAliveNeighbors(idx int) int {
 
 	// The first step is to convert the one-dimensional index to the two-dimensional coordinates
 	// ...
-	x, y := 0, 0 // modulo, division...
+	x, y := idx%g.w, idx/g.h // modulo, division...
 
 	// From there, we can establish the 8 surrounding coordinates
 	// ...
 	dirs := []struct{ dx, dy int }{
-		{x, y}, // Fix me of course
+		{-1, -1}, // Fix me of course
+		{0, -1},
+		{1, -1},
+		{-1, 0},
+		{1, 0},
+		{-1, 1},
+		{0, 1},
+		{1, 1},
 	}
 
 	// We start with 0 neighbors alive
@@ -82,7 +91,15 @@ func (g *Grid) CountAliveNeighbors(idx int) int {
 	for _, d := range dirs {
 		// If the cell at the given coordinates is alive, we increment the counter
 		// We must also check that the coordinates are within the grid bounds
-		_ = d
+		tx := x + d.dx
+		ty := y + d.dy
+
+		if tx >= 0 && ty >= 0 && tx < g.w && ty < g.h {
+			ti := ty*g.h + tx
+			if g.cells[ti] {
+				n = n + 1
+			}
+		}
 	}
 
 	return n

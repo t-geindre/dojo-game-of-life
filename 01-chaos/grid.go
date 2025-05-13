@@ -1,5 +1,7 @@
 package d01
 
+import "math/rand"
+
 type Grid struct {
 	cells []bool
 	w, h  int
@@ -24,4 +26,7 @@ func (g *Grid) Size() (int, int) {
 
 func (g *Grid) Randomize(f float64) {
 	// Randomize the grid according to the given factor
+	for i := range g.cells {
+		g.cells[i] = rand.Float64() < f
+	}
 }
