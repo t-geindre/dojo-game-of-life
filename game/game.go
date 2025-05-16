@@ -49,6 +49,7 @@ func (g *DefaultGame) Update() error {
 func (g *DefaultGame) Draw(screen *ebiten.Image) {
 	g.game.Draw(screen)
 	debug.DrawFTPS(screen)
+	debug.DrawPrintf(screen, debug.TopRight, "[ALT]+[ENTER] Fullscreen\n[ESC] Exit")
 }
 
 func (g *DefaultGame) Layout(outsideWidth, outsideHeight int) (int, int) {

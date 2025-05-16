@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="03-bench" type="GoTestRunConfiguration" factoryName="Go Test">
+    <module name="dojo-game-of-life" />
+    <working_directory value="$PROJECT_DIR$/03-optimization" />
+    <parameters value="-test.count=5 -test.benchtime=50x" />
+    <kind value="PACKAGE" />
+    <package value="dojo-game-of-life/03-optimization" />
+    <directory value="$PROJECT_DIR$/03-optimization" />
+    <filePath value="$PROJECT_DIR$/03-optimization/grid_test.go" />
+    <framework value="gobench" />
+    <method v="2" />
+  </configuration>
+</component>

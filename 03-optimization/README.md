@@ -14,7 +14,7 @@ You should be able to make two observations:
 This code run much slower than the previous ones because we went from a `500x500` grid to a `1800x900`, or from
 `250 000` cells to `1 620 000` cells, about `6.5` times more.
 
-There is a lot of know ways to optimize the Game of Life implementation.
+There is a lot of known ways to optimize the Game of Life implementation.
 And one of them is to use a one dimensional array, which is already done here.
 
 But, as we are trying to improve our Golang skills, we will use a Golang feature to achieve a good optimization.

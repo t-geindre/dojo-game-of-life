@@ -11,7 +11,7 @@ import (
 
 type DebugPosition int
 
-var BackgroundColor = color.RGBA{A: 0xAA}
+var BackgroundColor = color.RGBA{A: 0xDD}
 var PaddingH = 10
 var PaddingV = 5
 
@@ -24,8 +24,12 @@ const (
 	BottomRight
 )
 
-func DrawPrintf(img *ebiten.Image, pos DebugPosition, format string, args ...interface{}) {
-	str := fmt.Sprintf(format, args...)
+// DrawPrintf draws a formatted string on the image at the specified position.
+// img is the image to draw on,
+// pos is one of TopLeft, TopRight, BottomLeft, BottomRight,
+// format and are used as in fmt.Printf.
+func DrawPrintf(img *ebiten.Image, pos DebugPosition, format string, a ...interface{}) {
+	str := fmt.Sprintf(format, a...)
 	h, w := float32(0), float32(0)
 	for _, l := range strings.Split(str, "\n") {
 		h += ch
@@ -59,4 +63,20 @@ func DrawPrintf(img *ebiten.Image, pos DebugPosition, format string, args ...int
 
 func DrawFTPS(img *ebiten.Image) {
 	DrawPrintf(img, TopLeft, "FPS %.0f TPS %.0f", ebiten.ActualFPS(), ebiten.ActualTPS())
+}
+
+type Debug struct {
+	draw func(*ebiten.Image)
+}
+
+func NewDebug(draw func(*ebiten.Image)) *Debug {
+	return &Debug{
+		draw: draw,
+	}
+}
+
+func (d *Debug) Draw(dst *ebiten.Image) {
+	if d.draw != nil {
+		d.draw(dst)
+	}
 }

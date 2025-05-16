@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="05-run" type="GoApplicationRunConfiguration" factoryName="Go Application">
+    <module name="dojo-game-of-life" />
+    <working_directory value="$PROJECT_DIR$" />
+    <parameters value="05" />
+    <kind value="PACKAGE" />
+    <package value="dojo-game-of-life" />
+    <directory value="$PROJECT_DIR$" />
+    <filePath value="$PROJECT_DIR$/main.go" />
+    <method v="2" />
+  </configuration>
+</component>
