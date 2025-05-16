@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="07-test" type="GoTestRunConfiguration" factoryName="Go Test">
+    <module name="dojo-game-of-life" />
+    <working_directory value="$PROJECT_DIR$" />
+    <kind value="PACKAGE" />
+    <package value="dojo-game-of-life/07-loop" />
+    <directory value="$PROJECT_DIR$/07-loop" />
+    <filePath value="$PROJECT_DIR$" />
+    <framework value="gotest" />
+    <method v="2" />
+  </configuration>
+</component>
